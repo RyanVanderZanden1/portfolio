@@ -1,0 +1,226 @@
+.header {
+    width: 100%;
+    height: 50px;
+    display: block;
+    background-color: #333333;
+    color: white;
+}
+
+.inner_header {
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.header ul {
+    list-style-type: none;
+    margin-top: 0;
+    padding-left: 0;
+    overflow: hidden;
+}
+
+/* space between lines */
+
+.header li {
+    padding: 10px 0;
+}
+
+/* remove underline in links. */
+
+.header li a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.header li a:hover {
+    background-color: #333333;
+    color: #FFFFFF;
+}
+
+/* space around each of the menu items */
+
+.header li a {
+    padding: 10px 30px;
+}
+
+/* clear float on line below */
+
+.header .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height 1s ease-out;
+}
+
+/* menu icon for responsive hamburger menu */
+
+.header .menu-icon {
+    /* location of hamburger icon */
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    padding: 28px 20px;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.header .menu-icon .navicon {
+    /* center line of hamburger icon */
+    background: #333;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
+}
+
+.header .menu-icon .navicon:before, /* top and bottom lines of hamburger icon */
+.header .menu-icon .navicon:after {
+    background: #333333;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+    top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+    top: -5px;
+}
+
+/* respond to click on hamburger menu icon */
+
+.header .menu-btn {
+    /* hide checkbox */
+    display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+    max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+}
+
+/* animations */
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+}
+
+/* Mobile: NAV BAR 600px */
+@media (max-width:600px)  {
+    h1 {
+        padding-left: 10px;
+        padding-top: 5px;
+        font-size: 1.5em;
+        font-family: 'Montserrat';
+    }
+    .logo_container h1 span {
+        font-weight: 800;
+        font-size: 1em;
+    }
+}
+
+/*  DESKTOP: NAV BAR 801px */
+@media only screen and (min-width: 600px) {
+    .header {
+        width: 100%;
+        height: 80px;
+        display: block;
+        background-color: #333333;
+    }
+
+    .inner_header {
+        width: 1200px;
+        height: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .logo_container {
+        height: 100%;
+        display: table;
+        float: left;
+    }
+
+    .logo_container h1 {
+        color: white;
+        height: 100%;
+        display: table-cell;
+        vertical-align: middle;
+        font-family: 'Montserrat';
+        font-size: 32px;
+        font-weight: 200;
+    }
+
+    .logo_container h1 span {
+        font-weight: 800;
+    }
+
+    .nav {
+        float: right;
+        height: 100%;
+    }
+
+    .nav a {
+        height: 100%;
+        display: table;
+        float: left;
+        padding: 0px 20px;
+    }
+
+    .nav li a {
+        display: table-cell;
+        vertical-align: middle;
+        height: 100%;
+        color: white;
+        font-family: 'Montserrat';
+        font-size: 16px;
+        padding-top: 10px;
+    }
+    .nav a:last-child {
+        padding-right: 0;
+    }
+    .header .menu {
+        margin: 0 0 10px 0;
+    }
+
+    .header ul {
+        overflow: visible;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .header li {
+        display: inline;
+        text-align: center;
+    }
+
+    h1 {
+        padding-top: 20px;
+    }
+
+    /* hide the checkbox and label for it */
+
+    .header .menu-icon, .menu-btn {
+        display: none;
+    }
+
+}

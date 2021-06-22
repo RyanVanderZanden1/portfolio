@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+}
+main {
+    font-family: 'Open sans', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    margin-bottom: 180px;
+}
+h2 {
+    text-align: center;
+    font-family: 'Open sans', sans-serif;
+    font-size: 1.3em;
+    padding-top: 15px;
+    text-decoration: underline;
+}
+h3 {
+    font-family: 'Open sans', sans-serif;
+    text-align: center;
+    padding: .3em;
+}
+p {
+    font-family: 'Open sans', sans-serif;
+    padding: 1em;
+
+}
+form {
+    text-align: left;
+    margin-left: 50px;
+    margin-right: 500px;
+    padding-left: 50px;
+}
+input {
+    padding: 6px;
+}
+label {
+    width: auto;
+    display: inline-block;
+    text-align: left;
+}
+
+.label {
+    padding-top: 15px;
+}
+.label label {
+    width: 200px;
+    padding-top: 10px;
+}
+
+textarea {
+    padding: 6px;
+    font-family: 'Open sans', sans-serif;
+}
+
+.success {
+    padding: 10px 0px 5px 25px;
+    line-height: 22px;
+}
+
+a {
+    color: #ffffff;
+}
+
+a:active {
+    color: #ffffff;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+footer {
+    background-color: #333333;
+    text-align: center;
+    padding-bottom: 10px;
+    position: absolute;
+    bottom: 0;
+    padding-top: 10px;
+    width: 100%;
+    height: 50px;
+}
+
+footer a {
+    color: white;
+}
+
+footer p {
+    font-family: 'Montserrat';
+    background-color: #333333;
+    text-align: center;
+    padding: .05em;
+    color: #FFFFFF;
+}
+
+.projects {
+    width: 350px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Mobile CSS code */
+@media only screen and (min-width: 300px) {
+    body {
+        font-size: 1.2em;
+        width: 100%;
+    }
+    
+    textarea {
+        width: 180px;
+    }
+
+    #wrapper {
+        margin-top: 23px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+}
+
+/* Tablet CSS code */
+@media only screen and (min-width: 601px) {
+    .label {
+        padding-left: 200px;
+    }
+}
+/* Desktop CSS code and higher resolution */
+@media only screen and (min-width: 1025px) {
+    h2 {
+        text-decoration-line: underline;
+        text-decoration-color: black;
+    }
+
+    h3 {
+        margin-bottom: 5px;
+        text-decoration-line: underline;
+        text-decoration-color: black;
+    }
+
+    form {
+        text-align: left;
+        margin-right: 80px;
+        padding-left: 80px;
+        padding-top: 15px;
+    }
+
+    input {
+        padding: 6px;
+    }
+
+    label {
+        width: 450px;
+        display: inline-block;
+        text-align: right;
+    }
+
+    textarea {
+        padding: 6px;
+        font-family: 'Open sans', sans-serif;
+    }
+
+    footer {
+        background-color: #333333;
+        text-align: center;
+        padding-bottom: 10px;
+        position: absolute;
+        bottom: 0;
+        padding-top: 10px;
+        width: 100%;
+        height: 140px;
+    }
+    
+    footer p {
+        padding-top: 15px;
+    }
+
+    .a {
+        color: black;
+    }
+
+    .projects {
+        width: 900px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 1;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .middle {
+      transition: .5s ease;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .container:hover .projects {
+        opacity: 0.7;
+    }
+
+    .container:hover .middle {
+        opacity: 1;
+    }
+
+    .container {
+        position: relative;
+    }
+
+    .text {
+        background-color: #333333;
+        color: white;
+        font-size: 20px;
+        padding: 16px 32px;
+    }
+
+    #but {
+        width: 100px;
+        height: 30px;
+        margin-left: 230px;
+    }
+
+    .success {
+        text-align: left;
+        margin-top: 25px;
+        line-height: 30px;
+    }
+
+    #wrapper {
+        margin-top: 23px;
+        margin-left: 340px;
+        margin-right: 340px;
+    }
+}
