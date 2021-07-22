@@ -1,56 +1,50 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require './PHPMailer/vendor/autoload.php';
+
 $msg = '';
-//Don't run this unless we're handling a form submission
-if (isset($_POST['name'])) {
+//variables from the form
+
     /*Since the form has been submitted, let's capture the submission values so we can display them to the user on the success page */
-    $users_name = $_POST['name'];
-    $users_email = $_POST['email'];
-    $users_comment = $_POST['comment'];
+    $users_name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+    $users_email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+    $users_comment = filter_var($_POST['comment'], FILTER_SANITIZE_STRING);
+    
 
-    require 'PHPMailer/PHPMailerAutoload.php';
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
 
-    //Create a new PHPMailer instance
-    $mail = new PHPMailer;
-    //Tell PHPMailer to use SMTP - requires a local mail server
-    //Faster and safer than using mail()
-    $mail->isSMTP();
-    $mail->Host = 'mail.ryanvanderzanden.me';
-    $mail->Port = 465;
-    //Set this to true if SMTP host requires authentication to send email
-    $mail->SMTPAuth = true;
-    //Provide username and password
-    $mail->Username = "user@ryanvanderzanden.me";
-    $mail->Password = "fakepassword1";
+try {
+    //Server settings
+    $mail->SMTPDebug = 0;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'mail.ryanvanderzanden.me';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'user@ryanvanderzanden.me';                     //SMTP username
+    $mail->Password   = 'hVdI+&9vCh';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
+    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-    //Use a fixed address in your own domain as the from address
-    //**DO NOT** use the submitter's address here as it will be forgery
-    //and will cause your messages to fail SPF checks
-    $mail->setFrom('mail.ryanvanderzanden.me', 'Ryan VanderZanden');
-    //Send the message to yourself, or whoever should receive contact for submissions
-    $mail->addAddress('ryvanderzanden@gmail.com', 'Ryan VanderZanden');
-    //Put the submitter's address in a reply-to header
-    //This will fail if the address provided is invalid,
-    //in which case we should ignore the whole request
-    $mail->addReplyTo($users_email, $users_name);
-    $mail->Subject = 'portfolio contact form';
-    //Keep it simple - don't use HTML
-    $mail->isHTML(true);
-    //Build a simple message body
-    $mail->Body = <<<EOT
-Name: $users_name<br>
-Email: $users_email<br>
-Commment: $users_comment
-EOT;
-    //Send the message, check for errors
-    if (!$mail->send()) {
-        //The reason for failing to send will be in $mail->ErrorInfo
-        //but you shouldn't display errors to users - process the error, log it on your server.
-        echo "Mailer Error:" . $mail->ErrorInfo;
-    } else {
-        include 'success.html.php';
-    }
+    //Recipients
+    $mail->setFrom('ryvanderzanden@gmail.com', 'Ryan VanderZanden');
+    
+    $mail->addAddress($users_email, $users_name);               //recipient
+
+    //body content
+    $body = "<p><strong>Hello</strong>, you have received a message from " . $users_name . " the message is " . $users_comment . "</p>";
+    
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = 'Website mail from ' . $users_name;
+    $mail->Body    = $body;
+    $mail->AltBody = strip_tags($body);
+
+    $mail->send();
+    header("location: thankyou.php?sent");
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-
-
-?>
