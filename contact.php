@@ -25,14 +25,14 @@ try {
     $mail->Host       = 'mail.ryanvanderzanden.me';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = 'user@ryanvanderzanden.me';                     //SMTP username
-    $mail->Password   = 'hVdI+&9vCh';                               //SMTP password
+    $mail->Password   = 'xxxxxxx';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('ryvanderzanden@gmail.com', 'Ryan VanderZanden');
+    $mail->setFrom($users_email, $users_name);
     
-    $mail->addAddress($users_email, $users_name);               //recipient
+    $mail->addAddress('ryvanderzanden@gmail.com', 'Ryan VanderZanden');               //recipient
 
     //body content
     $body = "<p><strong>Hello</strong>, you have received a message from " . $users_name . " the message is " . $users_comment . "</p>";
